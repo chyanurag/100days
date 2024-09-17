@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Border Radius Visualizer</title>
+        <style>
+            img {
+                border: 2px solid black;
+            }
+            main {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <img id="image" src="medium.webp"><br>
+            <p>Adjust the slider to see the image border change</p>
+            <input type="range" min="0" max="50" id="input" value="0">
+        </main>
+        <script>
+            let image = document.querySelector('#image')
+            let input = document.querySelector('#input')
+
+            input.addEventListener('input', (e) => {
+                image.style.borderRadius = `${e.target.value}%`
+            })
+        </script>
+    </body>
+</html>

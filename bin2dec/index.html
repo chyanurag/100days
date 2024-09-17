@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Binary 2 Decimal</title>
+        <style>
+            *{
+                margin: 0px;
+                padding: 0px;
+                box-sizing: border-box;
+            }
+
+            input {
+                padding: 20px;
+                margin: 20px;
+                font-size: 1.2rem;
+            }
+            
+            main {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <input type="number" id="binary" placeholder="Binary">
+            <input type="number" id="decimal" placeholder="Decimal">
+            <p id="error"></p>
+        </main>
+        <script>
+            let binary = document.querySelector('#binary')
+            let decimal = document.querySelector('#decimal')
+            let error = document.querySelector('#error')
+            
+            function binaryToDecimal(binary) {
+                let s = String(binary)
+                for(let c of s) {
+                    if (c != '0' && c != '1') {
+                        error.innerText = 'Binary number can only have 0 or 1'
+                        return 0
+                    }
+                }
+                let res = 0
+                let idx = 0
+                for(let i = s.length-1; i >= 0; i--) {
+                    res += Math.pow(2, idx) * (parseInt(s[i]) ?? 0)
+                    idx++
+                }
+                error.innerText = ''
+                return res
+            }
+
+            function decimalToBinary(decimal) {
+                let res = ''
+                let num = parseInt(decimal) ?? 0
+                while(num > 0) {
+                    if((num%2) % 2 == 0) {
+                        res += '0'
+                    } else {
+                        res += '1'
+                    }
+                    num = Math.floor(num/2)
+                }
+                return res.split('').reverse().join('')
+            }
+
+            binary.addEventListener('input', (e) => {
+                let res = binaryToDecimal(e.target.value)
+                decimal.value = res
+            })
+
+            decimal.addEventListener('input', (e) => {
+                let res = decimalToBinary(e.target.value)
+                binary.value = res
+            })
+        </script>
+    </body>
+</html>
