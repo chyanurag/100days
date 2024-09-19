@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Document</title>
+        <style>
+           main {
+               width: 20%;
+               margin: auto; 
+            }
+            input {
+                width: 100%;
+            }
+            #flex {
+                display: flex;
+                flex-wrap: wrap;
+            }
+            button {
+                width: 20%;
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <div>
+                <input readonly id="result">
+            </div>
+            <div id="flex">
+                <button onclick="addValue(1)">1</button>
+                <button onclick="addValue(2)">2</button>
+                <button onclick="addValue(3)">3</button>
+                <button onclick="addValue(4)">4</button>
+                <button onclick="addValue(5)">5</button>
+                <button onclick="addValue(6)">6</button>
+                <button onclick="addValue(7)">7</button>
+                <button onclick="addValue(8)">8</button>
+                <button onclick="addValue(9)">9</button>
+                <button onclick="addValue(0)">0</button>
+                <button onclick="addValue('+')">+</button>
+                <button onclick="addValue('-')">-</button>
+                <button onclick="addValue('/')">/</button>
+                <button onclick="addValue('*')">*</button>
+                <button onclick="evaulate()">=</button>
+                <button onclick="clearInput()">AC</button>
+            </div>
+        </main>
+        <script>
+            let input = document.querySelector('input')
+            function addValue(char) {
+                input.value += char
+            }
+            function evaulate() {
+                input.value = eval(input.value)
+            }
+            function clearInput() {
+                input.value = ''
+            }
+        </script>
+    </body>
+</html>
